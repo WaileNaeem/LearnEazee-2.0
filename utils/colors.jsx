@@ -1,0 +1,16 @@
+export const COLORS = {
+  grey1: '#9E9E9E',
+  grey2: '#B1B1B2',
+  grey3: '#C7C7C7',
+  grey4: '#F1EEE3',
+  pink1: '#E36165',
+  pink2: '#E36166',
+  pink3: '#E77579',
+  pink4: '#F3BABC',
+  white: '#FFFFFF',
+  white1: '#F5F5F5',
+  black1: '#191D28',
+  black2: '#000000',
+  black3: '#010227',
+  black4: '#4042841A',
+};
