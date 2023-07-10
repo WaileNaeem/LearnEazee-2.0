@@ -2,9 +2,12 @@ import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {FONTS} from '../../../utils/font-family';
 
-const AppButton = ({title, buttonStyle, textStyle, onPress}) => {
+const AppButton = ({title, buttonStyle, textStyle, onPress, isValid}) => {
   return (
-    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.button, buttonStyle]}
+      onPress={onPress}
+      isValid={isValid}>
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );

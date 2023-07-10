@@ -53,7 +53,7 @@ const SplashScreen = () => {
         percentageValue = 100;
         progressIncrement = 1;
         clearIntervalHandler();
-        navigation.navigate(Navigation.SPLASH_ONE);
+        navigation.replace(Navigation.SPLASH_ONE);
       }
 
       setPercentage(percentageValue);

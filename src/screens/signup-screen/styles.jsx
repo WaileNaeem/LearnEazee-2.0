@@ -5,41 +5,25 @@ import {FONTS} from '../../../utils/font-family';
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    borderColor: 'red',
-    borderWidth: 1,
   },
   contentContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  tabs: {
-    width: '35%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  buttonContainer: {
-    paddingBottom: 5,
-  },
-  buttonText: {
-    color: COLORS.black1,
-    fontFamily: FONTS.Avenir,
-    fontWeight: '400',
-    fontSize: 20,
-  },
   signUpHeading: {
     fontFamily: FONTS.AccentGraphic,
     fontWeight: '500',
     fontSize: 40,
     color: COLORS.black1,
-    marginBottom: 15,
+    marginVertical: 30,
   },
   formContainer: {
     width: '85%',
   },
   inputFieldContainer: {
     borderBottomColor: COLORS.grey3,
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -48,9 +32,54 @@ const styles = StyleSheet.create({
   inputField: {
     color: COLORS.black1,
   },
-  checkbox: {
-    flex: 1,
-    marginVertical: 10,
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 7,
+  },
+  agreeText: {
+    fontFamily: FONTS.Avenir,
+    fontWeight: '400',
+    fontSize: 12,
+    color: COLORS.black1,
+  },
+  termsText: {
+    color: COLORS.pink3,
+  },
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginVertical: '8%',
+  },
+  buttonText: {
+    fontFamily: FONTS.Avenir,
+    fontWeight: '400',
+    fontSize: 20,
+    color: COLORS.white,
+  },
+  buttonStyle: {
+    backgroundColor: COLORS.pink3,
+    width: '100%',
+    height: 44,
+  },
+  loginContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  alreadyAccountText: {
+    fontFamily: FONTS.Avenir,
+    fontWeight: '400',
+    fontSize: 14,
+    color: COLORS.black1,
+  },
+  loginText: {
+    color: COLORS.pink3,
+  },
+  errorMsg: {
+    color: 'red',
+    alignSelf: 'flex-start',
+    fontSize: 12,
   },
 });
 export default styles;

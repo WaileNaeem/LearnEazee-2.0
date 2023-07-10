@@ -7,7 +7,7 @@ export const generateSchema = params => {
     if (key.indexOf('email') !== -1) {
       schema[key] = yup
         ?.string()
-        ?.email('Email must be a valid email')
+        ?.email('Email must be valid')
         ?.matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter valid email')
         ?.required('Email address is required');
     } else if (key.indexOf('password') !== -1) {
@@ -19,6 +19,7 @@ export const generateSchema = params => {
       schema[key] = yup
         ?.string()
         ?.min(6, 'Confirm password should be at least 6 characters long.')
+        ?.oneOf([yup.ref('password'), null], 'Passwords must match')
         ?.required('Confirm password is required');
     } else if (key.indexOf('firstName') !== -1) {
       schema[key] = yup

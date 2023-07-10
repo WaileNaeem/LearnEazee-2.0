@@ -3,14 +3,14 @@ import React from 'react';
 import styles from './styles';
 import {IMAGES} from '../../../utils/images-path';
 import {constants} from './constants';
-import AppButton from '../../components/AppButton/AppButton';
+import AppButton from '../../components/app-button/AppButton';
 import {Navigation} from '../../navigation/NavigationConstants';
 import {useNavigation} from '@react-navigation/native';
 
 const SplashOne = () => {
   const navigation = useNavigation();
   const handleNavigation = () => {
-    navigation.navigate(Navigation.SIGNUP);
+    navigation.replace(Navigation.SIGNUP);
   };
   return (
     <View style={styles.mainContainer}>
