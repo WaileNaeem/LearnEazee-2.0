@@ -5,6 +5,7 @@ import {
   Keyboard,
   ScrollView,
   TextInput,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
@@ -19,6 +20,9 @@ import {useFormik} from 'formik';
 import {generateSchema} from '../../../utils/form-validations';
 import Loader from '../../components/Loader/Loader';
 import api from '../../../api/baseApi';
+import {useNavigation} from '@react-navigation/native';
+import {Navigation} from '../../navigation/NavigationConstants';
+import Tabs from '../../components/tabs/Tabs';
 
 const SignupScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,6 +39,8 @@ const SignupScreen = () => {
     confirmPassword: '',
   };
 
+  const navigation = useNavigation();
+
   const {
     handleBlur,
     handleSubmit,
@@ -43,7 +49,6 @@ const SignupScreen = () => {
     errors,
     values,
     isValid,
-    handleReset,
   } = useFormik({
     initialValues: user,
     validationSchema: generateSchema(user),
@@ -60,10 +65,11 @@ const SignupScreen = () => {
         });
         if (response.ok) {
           setIsLoaderVisible(false);
-          console.log('Successfully Signed in');
+          console.log(response.data);
+          navigation.navigate(Navigation.LOGIN);
         } else {
           setIsLoaderVisible(false);
-          console.log('Sign in Failed');
+          console.log(response.data);
         }
       } else {
         setisCheckBoxErrorVisible(true);
@@ -71,12 +77,27 @@ const SignupScreen = () => {
     },
   });
 
+  const handleLogin = () => {
+    navigation.navigate(Navigation.LOGIN);
+  };
+  const handlePrivacyPolicy = () => {
+    navigation.navigate(Navigation.PRIVACY_POLICY);
+  };
+
   return (
-    <View style={styles.mainContainer}>
+    <KeyboardAvoidingView style={styles.mainContainer}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <ScrollView
           contentContainerStyle={{flexGrow: 1}}
           keyboardShouldPersistTaps="handled">
+          <View style={styles.tabContainer}>
+            <Tabs
+              title={constants.SIGNUP}
+              activeTabText={styles.activeTabText}
+              activeTab={styles.activeTab}
+            />
+            <Tabs title={constants.LOGIN} onPress={handleLogin} />
+          </View>
           <View style={styles.contentContainer}>
             <Text style={styles.signUpHeading}>{constants.SIGNUP}</Text>
             {/* <===============SIGNUP FORM ======================> */}
@@ -214,11 +235,14 @@ const SignupScreen = () => {
                 <CheckBox
                   disabled={false}
                   value={toggleCheckBox}
+                  tintColors={{true: COLORS.black1}}
                   onValueChange={newValue => setToggleCheckBox(newValue)}
                 />
                 <Text style={styles.agreeText}>
                   {constants.AGREE_TEXT}{' '}
-                  <Text style={styles.termsText}>{constants.TERMS_TEXT}</Text>
+                  <Text style={styles.termsText} onPress={handlePrivacyPolicy}>
+                    {constants.TERMS_TEXT}
+                  </Text>
                 </Text>
               </View>
               {isCheckBoxErrorVisible && (
@@ -245,7 +269,7 @@ const SignupScreen = () => {
         </ScrollView>
       </TouchableWithoutFeedback>
       <Loader isVisible={isLoaderVisible} />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

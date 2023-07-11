@@ -5,4 +5,6 @@ export const Navigation = {
   TAB: 'tab-navigator',
   DASHBOARD: 'dashboard-screen',
   SIGNUP: 'signup-screen',
+  LOGIN: 'login-screen',
+  PRIVACY_POLICY: 'privacy-policy-screen',
 };

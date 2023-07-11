@@ -6,10 +6,8 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
   },
-  contentContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  scrollView: {
+    flexGrow: 1,
   },
   tabContainer: {
     alignSelf: 'center',
@@ -17,7 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '40%',
-    marginVertical: '5%',
+    marginVertical: '7%',
   },
   activeTab: {
     borderBottomColor: COLORS.pink3,
@@ -31,14 +29,23 @@ const styles = StyleSheet.create({
     // borderColor: 'red',
     // borderWidth: 1,
   },
-  signUpHeading: {
+  loginText: {
     fontFamily: FONTS.AccentGraphic,
     fontWeight: '500',
     fontSize: 40,
     color: COLORS.black1,
   },
-  formContainer: {
-    width: '85%',
+  socialLoginButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '80%',
+    marginTop: '15%',
+    height: '8%',
+    marginBottom: '10%',
+  },
+  loginForm: {
+    width: '80%',
   },
   inputFieldContainer: {
     borderBottomColor: COLORS.grey3,
@@ -51,25 +58,18 @@ const styles = StyleSheet.create({
   inputField: {
     color: COLORS.black1,
   },
-  checkboxContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 7,
-  },
-  agreeText: {
+  forgotPassword: {
+    marginVertical: '5%',
+    alignItems: 'flex-start',
+    width: '80%',
+    color: COLORS.black1,
     fontFamily: FONTS.Avenir,
     fontWeight: '400',
     fontSize: 12,
-    color: COLORS.black1,
   },
-  termsText: {
+  reset: {
     color: COLORS.pink3,
-  },
-  buttonContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    marginVertical: '8%',
+    fontSize: 14,
   },
   buttonText: {
     fontFamily: FONTS.Avenir,
@@ -79,20 +79,17 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     backgroundColor: COLORS.pink3,
-    width: '100%',
+    width: '80%',
     height: 44,
   },
-  loginContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  alreadyAccountText: {
-    fontFamily: FONTS.Avenir,
-    fontWeight: '400',
-    fontSize: 14,
+  createAccount: {
     color: COLORS.black1,
+    fontWeight: '400',
+    fontFamily: FONTS.Avenir,
+    fontSize: 14,
+    marginVertical: '5%',
   },
-  loginText: {
+  signUp: {
     color: COLORS.pink3,
   },
   errorMsg: {
@@ -101,4 +98,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
+
 export default styles;

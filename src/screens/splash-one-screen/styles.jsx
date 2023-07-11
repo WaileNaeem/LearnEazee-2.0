@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.pink3,
     flex: 1,
     width: '100%',
-    height: height / 2.5,
+    height: height / 2.2,
     position: 'absolute',
     bottom: 0,
     borderTopLeftRadius: 50,

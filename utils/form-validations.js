@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import api from '../api/baseApi';
 
 export const generateSchema = params => {
   const keys = Object?.keys(params);
@@ -10,6 +11,19 @@ export const generateSchema = params => {
         ?.email('Email must be valid')
         ?.matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter valid email')
         ?.required('Email address is required');
+      // ?.test('unique-email', 'Email already exists', async function (value) {
+      //   const response = await api.post('/api/v1/auth', {
+      //     email: value,
+      //   });
+      //   console.log(response);
+      //   const errorMessage =
+      //     response?.data?.message || 'Email already exists';
+      //   const {path, createError} = this;
+      //   if (this.parent?.errors?.email === 'Email already exists') {
+      //     return true;
+      //   }
+      //   return createError({path, message: errorMessage[1]});
+      // });
     } else if (key.indexOf('password') !== -1) {
       schema[key] = yup
         ?.string()
