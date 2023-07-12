@@ -7,4 +7,5 @@ export const Navigation = {
   SIGNUP: 'signup-screen',
   LOGIN: 'login-screen',
   PRIVACY_POLICY: 'privacy-policy-screen',
+  VERIFY_EMAIL: 'verify-email-screen',
 };

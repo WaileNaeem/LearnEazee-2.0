@@ -100,7 +100,6 @@ const SignupScreen = () => {
           </View>
           <View style={styles.contentContainer}>
             <Text style={styles.signUpHeading}>{constants.SIGNUP}</Text>
-            {/* <===============SIGNUP FORM ======================> */}
             <View style={styles.formContainer}>
               <View style={styles.inputFieldContainer}>
                 <TextInput

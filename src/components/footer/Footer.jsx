@@ -3,10 +3,12 @@ import React from 'react';
 import {FONTS} from '../../../utils/font-family';
 import {COLORS} from '../../../utils/colors';
 
-const Footer = () => {
+const Footer = ({containerStyle, textStyle}) => {
   return (
-    <View style={styles.mainContainer}>
-      <Text style={styles.text}>© 2023 LearnEazee. All rights reserved.</Text>
+    <View style={[styles.mainContainer, containerStyle]}>
+      <Text style={[styles.text, textStyle]}>
+        © 2023 LearnEazee. All rights reserved.
+      </Text>
     </View>
   );
 };

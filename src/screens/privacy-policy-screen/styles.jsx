@@ -38,10 +38,8 @@ const styles = StyleSheet.create({
     color: COLORS.white1,
   },
   contentContainer: {
-    borderColor: 'red',
-    borderWidth: 1,
     flex: 1,
-    padding: 10,
+    paddingHorizontal: 10,
   },
 });
 export default styles;

@@ -1,7 +1,16 @@
-import {View, Text, ScrollView, FlatList, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  FlatList,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
-import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import PrivacyPolicies from '../../components/policies/privacy-policy';
+import CookiesPolicy from '../../components/policies/cookies-policy';
+import TermAndConditions from '../../components/policies/terms-and-conditions';
+import IntellectualProperty from '../../components/policies/intellectual-property';
 
 const PrivacyPolicyScreen = () => {
   const tabs = [
@@ -53,7 +62,14 @@ const PrivacyPolicyScreen = () => {
           )}
         />
       </View>
-      <View style={styles.contentContainer}></View>
+      <View style={styles.contentContainer}>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+          {selectedTab === 1 && <PrivacyPolicies />}
+          {selectedTab === 2 && <CookiesPolicy />}
+          {selectedTab === 3 && <TermAndConditions />}
+          {selectedTab === 4 && <IntellectualProperty />}
+        </ScrollView>
+      </View>
     </View>
   );
 };
