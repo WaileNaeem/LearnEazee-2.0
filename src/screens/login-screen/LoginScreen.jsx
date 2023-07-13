@@ -23,6 +23,7 @@ import Loader from '../../components/Loader/Loader';
 import api from '../../../api/baseApi';
 import {useNavigation} from '@react-navigation/native';
 import {Navigation} from '../../navigation/NavigationConstants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -48,6 +49,9 @@ const LoginScreen = () => {
       });
       if (response.ok) {
         setIsLoaderVisible(false);
+        const accessToken = response.headers['access-token'];
+        const cliendId = response.headers['client'];
+        const expiry = response.headers['expiry'];
         console.log(response?.data?.message);
       } else {
         setIsLoaderVisible(false);

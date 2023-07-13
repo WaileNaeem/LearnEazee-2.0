@@ -15,14 +15,16 @@ export const generateSchema = params => {
       //   const response = await api.post('/api/v1/auth', {
       //     email: value,
       //   });
-      //   console.log(response);
-      //   const errorMessage =
-      //     response?.data?.message || 'Email already exists';
+      //   console.log(response.data);
+      //   const errorMessage = 'Email already exists';
       //   const {path, createError} = this;
-      //   if (this.parent?.errors?.email === 'Email already exists') {
-      //     return true;
+      //   const emailTakenMessage = response?.data?.message?.includes(
+      //     'Email has already been taken',
+      //   );
+      //   const emailExists = response?.data?.success;
+      //   if (emailTakenMessage && emailExists) {
+      //     return createError({path, message: errorMessage});
       //   }
-      //   return createError({path, message: errorMessage[1]});
       // });
     } else if (key.indexOf('password') !== -1) {
       schema[key] = yup

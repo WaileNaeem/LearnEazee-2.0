@@ -8,4 +8,6 @@ export const Navigation = {
   LOGIN: 'login-screen',
   PRIVACY_POLICY: 'privacy-policy-screen',
   VERIFY_EMAIL: 'verify-email-screen',
+  RESET_PASSWORD: 'reset-password-screen',
+  ALL_DONE: 'all-done-screen',
 };

@@ -5,7 +5,7 @@ import {COLORS} from '../../../utils/colors';
 
 const AppButton = ({
   title,
-  buttonStyle = {backgroundColor: COLORS.white, height: 50},
+  buttonStyle = {backgroundColor: COLORS.white},
   textStyle,
   onPress,
   isValid,
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '80%',
     alignSelf: 'center',
+    height: 44,
   },
   text: {
     fontFamily: FONTS.Avenir,
