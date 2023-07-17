@@ -12,7 +12,7 @@ import {TextInput} from 'react-native-gesture-handler';
 
 const Dashboard = () => {
   return (
-    <KeyboardAvoidingView behavior="height">
+    <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
       <Text>hello</Text>
     </KeyboardAvoidingView>
   );
