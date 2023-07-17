@@ -5,6 +5,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   TextInput,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
@@ -28,6 +29,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+  const [isLoggedinFailed, setIsLoggedinFailed] = useState(false);
   const navigation = useNavigation();
   const user = {email: '', password: ''};
   const {
@@ -38,6 +40,7 @@ const LoginScreen = () => {
     handleChange,
     handleBlur,
     handleSubmit,
+    setValues,
   } = useFormik({
     initialValues: user,
     validationSchema: generateSchema(user),
@@ -52,15 +55,27 @@ const LoginScreen = () => {
         const accessToken = response.headers['access-token'];
         const cliendId = response.headers['client'];
         const expiry = response.headers['expiry'];
+        await AsyncStorage.setItem('accessToken', accessToken);
+        await AsyncStorage.setItem('cliendId', cliendId);
+        await AsyncStorage.setItem('expiry', expiry);
+        await AsyncStorage.setItem('uid', values?.email);
         console.log(response?.data?.message);
+        navigation.navigate(Navigation.DASHBOARD);
       } else {
         setIsLoaderVisible(false);
+        Alert.alert('', constants.LOGIN_FAIL);
         console.log(response.data?.message);
       }
     },
   });
   const handleSignUp = () => {
     navigation.navigate(Navigation.SIGNUP);
+  };
+  const handleReset = () => {
+    navigation.navigate(Navigation.RESET_PASSWORD);
+  };
+  const handleOnChangeText = (value, key) => {
+    setValues(prev => ({...prev, [key]: value}));
   };
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
@@ -90,7 +105,7 @@ const LoginScreen = () => {
                 maxLength={50}
                 keyboardType="email-address"
                 value={values?.email}
-                onChangeText={handleChange('email')}
+                onChangeText={text => handleOnChangeText(text, 'email')}
                 onBlur={handleBlur('email')}
               />
               <Fontisto name="email" size={20} color={COLORS.black1} />
@@ -135,7 +150,9 @@ const LoginScreen = () => {
               {marginTop: errors?.password && touched?.password ? 0 : 19.455},
             ]}>
             {constants.FORGOTTEN_PASSWORD}{' '}
-            <Text style={styles.reset}>{constants.RESET}</Text>{' '}
+            <Text style={styles.reset} onPress={handleReset}>
+              {constants.RESET}
+            </Text>{' '}
           </Text>
           <AppButton
             title={constants.LOGIN}

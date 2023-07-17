@@ -18,12 +18,20 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Navigation.RESET_PASSWORD}>
+      initialRouteName={Navigation.SPLASH}>
       <Stack.Screen name={Navigation.DRAWER} component={DrawerNavigator} />
       <Stack.Screen name={Navigation.SPLASH} component={SplashScreen} />
       <Stack.Screen name={Navigation.SPLASH_ONE} component={SplashOne} />
-      <Stack.Screen name={Navigation.SIGNUP} component={SignupScreen} />
-      <Stack.Screen name={Navigation.LOGIN} component={LoginScreen} />
+      <Stack.Screen
+        name={Navigation.SIGNUP}
+        component={SignupScreen}
+        ptions={{animationEnabled: false}}
+      />
+      <Stack.Screen
+        name={Navigation.LOGIN}
+        component={LoginScreen}
+        options={{animationEnabled: false}}
+      />
       <Stack.Screen name={Navigation.VERIFY_EMAIL} component={VerifyEmail} />
       <Stack.Screen
         name={Navigation.RESET_PASSWORD}

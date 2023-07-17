@@ -1,14 +1,21 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React from 'react';
+import styles from './styles';
+import {TextInput} from 'react-native-gesture-handler';
 
 const Dashboard = () => {
   return (
-    <View>
-      <Text>Dashboard</Text>
-    </View>
+    <KeyboardAvoidingView behavior="height">
+      <Text>hello</Text>
+    </KeyboardAvoidingView>
   );
 };
 
 export default Dashboard;
-
-const styles = StyleSheet.create({});

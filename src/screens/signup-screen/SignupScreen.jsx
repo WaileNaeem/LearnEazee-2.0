@@ -10,8 +10,6 @@ import {
 import React, {useState} from 'react';
 import styles from './styles';
 import {COLORS} from '../../../utils/colors';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import CheckBox from '@react-native-community/checkbox';
 import {constants} from './constants';
 import AppButton from '../../components/app-button/AppButton';
@@ -23,6 +21,7 @@ import api from '../../../api/baseApi';
 import {useNavigation} from '@react-navigation/native';
 import {Navigation} from '../../navigation/NavigationConstants';
 import Tabs from '../../components/tabs/Tabs';
+import AppTextInput from '../../components/text-input-field/AppTextInput';
 
 const SignupScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -44,11 +43,11 @@ const SignupScreen = () => {
   const {
     handleBlur,
     handleSubmit,
-    handleChange,
     touched,
     errors,
     values,
     isValid,
+    setValues,
   } = useFormik({
     initialValues: user,
     validationSchema: generateSchema(user),
@@ -69,6 +68,9 @@ const SignupScreen = () => {
           navigation.navigate(Navigation.LOGIN);
         } else {
           setIsLoaderVisible(false);
+          if (response?.data?.message?.includes(constants.EMAIL_TAKEN)) {
+            setIsEmailErrorVisible(true);
+          }
           console.log(response.data);
         }
       } else {
@@ -84,8 +86,20 @@ const SignupScreen = () => {
     navigation.navigate(Navigation.PRIVACY_POLICY);
   };
 
+  const onChangeTextHandler = (value, key) => {
+    setIsEmailErrorVisible(false);
+    setValues(prev => ({...prev, [key]: value}));
+  };
+
+  const showPasswordHandler = () => {
+    setShowPassword(!showPassword);
+  };
+  const showConfirmPasswordHandler = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
-    <KeyboardAvoidingView style={styles.mainContainer}>
+    <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <ScrollView
           contentContainerStyle={{flexGrow: 1}}
@@ -101,123 +115,96 @@ const SignupScreen = () => {
           <View style={styles.contentContainer}>
             <Text style={styles.signUpHeading}>{constants.SIGNUP}</Text>
             <View style={styles.formContainer}>
-              <View style={styles.inputFieldContainer}>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder={constants.FIRST_NAME_PLACEHOLDER}
-                  placeholderTextColor={COLORS.grey3}
-                  maxLength={31}
-                  value={values?.firstName}
-                  onChangeText={handleChange('firstName')}
-                  onChange={handleChange('firstName')}
-                  onBlur={handleBlur('firstName')}
-                />
-                <FeatherIcon name="user" size={20} color={COLORS.black1} />
-              </View>
+              <AppTextInput
+                maxLength={31}
+                placeholder={constants.FIRST_NAME_PLACEHOLDER}
+                placeholderTextColor={COLORS.grey3}
+                value={values?.firstName}
+                onChangeText={text =>
+                  onChangeTextHandler(text, constants.FIRST_NAME_KEY)
+                }
+                onBlur={handleBlur(constants.FIRST_NAME_KEY)}
+                icon="user"
+              />
               {touched?.firstName && errors?.firstName && (
                 <Text style={styles.errorMsg}>{errors?.firstName}</Text>
               )}
-              <View
-                style={[
-                  styles.inputFieldContainer,
-                  {
-                    marginTop:
-                      errors?.firstName && touched?.firstName ? 0 : 19.455,
-                  },
-                ]}>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder={constants.LAST_NAME_PLACEHOLDER}
-                  placeholderTextColor={COLORS.grey3}
-                  maxLength={31}
-                  value={values?.lastName}
-                  onChangeText={handleChange('lastName')}
-                  onBlur={handleBlur('lastName')}
-                />
-                <FeatherIcon name="user" size={20} color={COLORS.black1} />
-              </View>
+              <AppTextInput
+                maxLength={31}
+                placeholder={constants.LAST_NAME_PLACEHOLDER}
+                placeholderTextColor={COLORS.grey3}
+                value={values?.lastName}
+                onChangeText={text =>
+                  onChangeTextHandler(text, constants.LAST_NAME_KEY)
+                }
+                onBlur={handleBlur(constants.LAST_NAME_KEY)}
+                icon="user"
+                errorStyles={{
+                  marginTop:
+                    errors?.firstName && touched?.firstName ? 0 : 19.455,
+                }}
+              />
               {touched?.lastName && errors?.lastName && (
                 <Text style={styles.errorMsg}>{errors?.lastName}</Text>
               )}
-              <View
-                style={[
-                  styles.inputFieldContainer,
-                  {
-                    marginTop:
-                      errors?.lastName && touched?.lastName ? 0 : 19.455,
-                  },
-                ]}>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder={constants.EMAIL_ADDRESS_PLACEHOLDER}
-                  placeholderTextColor={COLORS.grey3}
-                  maxLength={50}
-                  keyboardType="email-address"
-                  value={values?.email}
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                />
-                <Fontisto name="email" size={20} color={COLORS.black1} />
-              </View>
+              <AppTextInput
+                maxLength={50}
+                placeholder={constants.EMAIL_ADDRESS_PLACEHOLDER}
+                placeholderTextColor={COLORS.grey3}
+                KeyboardType="email-address"
+                value={values?.email}
+                onChangeText={text =>
+                  onChangeTextHandler(text, constants.EMAIL_KEY)
+                }
+                onBlur={handleBlur(constants.EMAIL_KEY)}
+                errorStyles={{
+                  marginTop: errors?.lastName && touched?.lastName ? 0 : 19.455,
+                }}
+                icon={'mail'}
+              />
               {touched?.email && errors?.email && (
                 <Text style={styles.errorMsg}>{errors?.email}</Text>
               )}
-              <View
-                style={[
-                  styles.inputFieldContainer,
-                  {
-                    marginTop: errors?.email && touched?.email ? 0 : 19.455,
-                  },
-                ]}>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder={constants.PASSWORD_PLACEHOLDER}
-                  placeholderTextColor={COLORS.grey3}
-                  secureTextEntry={showPassword}
-                  maxLength={30}
-                  value={values?.password}
-                  onChangeText={handleChange('password')}
-                  onBlur={handleBlur('password')}
-                />
-                <TouchableWithoutFeedback
-                  onPress={() => setShowPassword(!showPassword)}>
-                  <FeatherIcon
-                    name={showPassword ? 'eye-off' : 'eye'}
-                    size={20}
-                    color={COLORS.black1}
-                    value={values?.password}
-                  />
-                </TouchableWithoutFeedback>
-              </View>
+              {isEmailErrorVisible && (
+                <Text style={styles.errorMsg}>
+                  {constants.EMAIL_EXISTS_ERROR}
+                </Text>
+              )}
+              <AppTextInput
+                placeholder={constants.PASSWORD_PLACEHOLDER}
+                placeholderTextColor={COLORS.grey3}
+                maxLength={31}
+                value={values?.password}
+                onChangeText={text =>
+                  onChangeTextHandler(text, constants.PASSWORD_KEY)
+                }
+                onBlur={handleBlur(constants.PASSWORD_KEY)}
+                secureTextEntry={showPassword}
+                icon={showPassword ? 'eye' : 'eye-off'}
+                iconPress={showPasswordHandler}
+                errorStyles={{
+                  marginTop: errors?.email && touched?.email ? 0 : 19.455,
+                }}
+              />
               {touched?.password && errors?.password && (
                 <Text style={styles.errorMsg}>{errors?.password}</Text>
               )}
-              <View
-                style={[
-                  styles.inputFieldContainer,
-                  {
-                    marginTop: errors?.email && touched?.email ? 0 : 19.455,
-                  },
-                ]}>
-                <TextInput
-                  style={styles.inputField}
-                  placeholder={constants.CONFIRM_PASSWORD_PLACEHOLDER}
-                  placeholderTextColor={COLORS.grey3}
-                  secureTextEntry={showConfirmPassword}
-                  maxLength={30}
-                  value={values?.confirmPassword}
-                  onChangeText={handleChange('confirmPassword')}
-                  onBlur={handleBlur('confirmPassword')}
-                />
-                <TouchableWithoutFeedback
-                  onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-                  <FeatherIcon
-                    name={showConfirmPassword ? 'eye-off' : 'eye'}
-                    size={20}
-                    color={COLORS.black1}
-                  />
-                </TouchableWithoutFeedback>
-              </View>
+              <AppTextInput
+                placeholder={constants.CONFIRM_PASSWORD_PLACEHOLDER}
+                placeholderTextColor={COLORS.grey3}
+                maxLength={31}
+                value={values?.confirmPassword}
+                onChangeText={text =>
+                  onChangeTextHandler(text, constants.CONFIRM_PASSWORD_KEY)
+                }
+                onBlur={handleBlur(constants.CONFIRM_PASSWORD_KEY)}
+                secureTextEntry={showConfirmPassword}
+                icon={showConfirmPassword ? 'eye' : 'eye-off'}
+                iconPress={showConfirmPasswordHandler}
+                errorStyles={{
+                  marginTop: errors?.password && touched?.password ? 0 : 19.455,
+                }}
+              />
               {touched?.confirmPassword && errors?.confirmPassword && (
                 <Text style={styles.errorMsg}>{errors?.confirmPassword}</Text>
               )}
@@ -259,7 +246,9 @@ const SignupScreen = () => {
               <View style={styles.loginContainer}>
                 <Text style={styles.alreadyAccountText}>
                   {constants.ALREADY_ACCOUNT}{' '}
-                  <Text style={styles.loginText}>{constants.LOGIN}</Text>
+                  <Text style={styles.loginText} onPress={handleLogin}>
+                    {constants.LOGIN}
+                  </Text>
                 </Text>
               </View>
             </View>

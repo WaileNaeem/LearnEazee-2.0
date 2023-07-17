@@ -11,4 +11,11 @@ export const constants = {
   LOGIN: 'Login',
   CHECKBOX_ERROR: 'Please agree to Terms & Conditions',
   API_ENDPOINT: '/api/v1/auth',
+  EMAIL_EXISTS_ERROR: 'Email already exist',
+  EMAIL_TAKEN: 'Email has already been taken',
+  FIRST_NAME_KEY: 'firstName',
+  LAST_NAME_KEY: 'lastName',
+  EMAIL_KEY: 'email',
+  PASSWORD_KEY: 'password',
+  CONFIRM_PASSWORD_KEY: 'confirmPassword',
 };

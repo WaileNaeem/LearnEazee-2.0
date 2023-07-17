@@ -22,11 +22,14 @@ import {generateSchema} from '../../../utils/form-validations';
 import Loader from '../../components/Loader/Loader';
 import api from '../../../api/baseApi';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
+import {Navigation} from '../../navigation/NavigationConstants';
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+  const navigation = useNavigation();
   const user = {
     password: '',
     confirmPassword: '',
@@ -43,6 +46,40 @@ const ResetPassword = () => {
       validationSchema: generateSchema(user),
       onSubmit: async values => {
         setIsLoaderVisible(true);
+        const accessToken = AsyncStorage.getItem('accessToken');
+        const clientId = AsyncStorage.getItem('clientId');
+        const expiry = AsyncStorage.getItem('expiry');
+        const uid = AsyncStorage.getItem('uid');
+        const headers = {
+          'access-token': accessToken,
+          client: clientId,
+          client_id: clientId,
+          expiry: expiry,
+          token: accessToken,
+          uid: uid,
+        };
+        console.log(
+          '🚀 ~ file: ResetPassword.jsx:51 ~ ResetPassword ~ headers:',
+          headers,
+        );
+
+        const response = api.put(
+          constants.API_ENDPOINT,
+          {
+            reset_password_token: accessToken,
+            password: values?.password,
+            password_confirmation: values?.confirmPassword,
+          },
+          {headers},
+        );
+        if (response.ok) {
+          setIsLoaderVisible(false);
+          console.log(response);
+          navigation.navigate(Navigation.ALL_DONE);
+        } else {
+          setIsLoaderVisible(false);
+          console.log(response);
+        }
       },
     });
   return (
@@ -110,6 +147,7 @@ const ResetPassword = () => {
               title={constants.RESET}
               buttonStyle={styles.appButtonContainer}
               textStyle={styles.appButtonTextStyle}
+              onPress={handleSubmit}
             />
           </View>
           <Footer />

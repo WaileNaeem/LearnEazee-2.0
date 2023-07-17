@@ -10,4 +10,8 @@ export const Navigation = {
   VERIFY_EMAIL: 'verify-email-screen',
   RESET_PASSWORD: 'reset-password-screen',
   ALL_DONE: 'all-done-screen',
+  TOP_TAB: 'top-tabs-navigator',
+  ALL_CATEGORIES: 'all-categories-screen',
+  CART: 'cart-screen',
+  READER_DASHBOARD: 'reader-dashboard-screen',
 };
