@@ -58,10 +58,6 @@ const ResetPassword = () => {
           token: accessToken,
           uid: uid,
         };
-        console.log(
-          '🚀 ~ file: ResetPassword.jsx:51 ~ ResetPassword ~ headers:',
-          headers,
-        );
 
         const response = api.put(
           constants.API_ENDPOINT,

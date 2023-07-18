@@ -4,8 +4,10 @@ import styles from './styles';
 import {IMAGES} from '../../../utils/images-path';
 import AppButton from '../app-button/AppButton';
 import Footer from '../footer/Footer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Sidebar = () => {
+  const email = AsyncStorage.getItem('uid');
   return (
     <View style={styles.mainContainer}>
       <View style={styles.contentContainer}>

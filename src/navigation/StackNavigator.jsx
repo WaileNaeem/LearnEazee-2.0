@@ -18,7 +18,7 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Navigation.SPLASH}>
+      initialRouteName={Navigation.DASHBOARD}>
       <Stack.Screen name={Navigation.DRAWER} component={DrawerNavigator} />
       <Stack.Screen name={Navigation.SPLASH} component={SplashScreen} />
       <Stack.Screen name={Navigation.SPLASH_ONE} component={SplashOne} />
