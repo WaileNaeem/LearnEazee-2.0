@@ -10,15 +10,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
   },
-
-  sliderContainer: {
-    borderColor: 'red',
-    borderWidth: 1,
-    width: '100%',
-    // height: '20%',
-    height: 155,
-    marginVertical: '5%',
-  },
   sectionsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -93,6 +84,73 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.Avenir,
     fontWeight: '400',
     fontSize: 10,
+  },
+  noBookError: {
+    color: COLORS.black1,
+    marginLeft: '35%',
+  },
+  sliderContainer: {
+    width: '100%',
+    // height: '20%',
+    height: 155,
+    marginVertical: '5%',
+    backgroundColor: COLORS.pink3,
+  },
+  sliderContent: {
+    flex: 1,
+    borderColor: 'red',
+    borderWidth: 1,
+  },
+  sliderContentContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderColor: 'red',
+    borderWidth: 1,
+    width: '100%',
+  },
+  slider: {
+    flex: 1,
+  },
+  arrowContainer: {
+    borderColor: COLORS.pink1,
+    borderWidth: 1,
+    borderRadius: 50,
+    backgroundColor: COLORS.pink1,
+    width: 20,
+    height: 20,
+    alignSelf: 'center',
+  },
+  sliderBookContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bookTitle: {
+    fontFamily: FONTS.AccentGraphic,
+    fontWeight: '500',
+    fontSize: 14,
+    color: COLORS.white,
+  },
+  bookAuthor: {
+    fontFamily: FONTS.Avenir,
+    fontWeight: '400',
+    fontSize: 8,
+    color: COLORS.white,
+  },
+  sliderButton: {
+    borderColor: COLORS.white,
+    borderWidth: 1,
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.white,
+  },
+  sliderButtonText: {
+    color: COLORS.pink3,
+    fontFamily: FONTS.Avenir,
+    fontWeight: '400',
+    fontSize: 8,
   },
 });
 export default styles;

@@ -3,7 +3,7 @@ import React from 'react';
 import {COLORS} from '../../../utils/colors';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const SearchBar = () => {
+const SearchBar = ({searchHandler}) => {
   return (
     <View style={styles.searchBarContainer}>
       <View style={styles.searchBarIcon}>
@@ -14,6 +14,7 @@ const SearchBar = () => {
           style={styles.searchBarText}
           placeholder="Search"
           placeholderTextColor={COLORS.black1}
+          onChangeText={text => searchHandler(text)}
         />
       </View>
     </View>
