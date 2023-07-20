@@ -12,13 +12,14 @@ import Sidebar from '../components/sidebar/Sidebar';
 import VerifyEmail from '../screens/verify-email-screen/VerifyEmail';
 import ResetPassword from '../screens/reset-password-screen/ResetPassword';
 import AllDone from '../screens/all-done-screen/AllDone';
+import AddToCart from '../screens/add-to-cart-screen/AddToCart';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Navigation.DASHBOARD}>
+      initialRouteName={Navigation.ADD_TO_CART}>
       <Stack.Screen name={Navigation.DRAWER} component={DrawerNavigator} />
       <Stack.Screen name={Navigation.SPLASH} component={SplashScreen} />
       <Stack.Screen name={Navigation.SPLASH_ONE} component={SplashOne} />
@@ -42,6 +43,7 @@ const StackNavigator = () => {
         name={Navigation.PRIVACY_POLICY}
         component={PrivacyPolicyScreen}
       />
+      <Stack.Screen name={Navigation.ADD_TO_CART} component={AddToCart} />
     </Stack.Navigator>
   );
 };

@@ -21,15 +21,12 @@ import {categories} from '../../data/categories';
 import CategoriesList from '../../components/categories-list/CategoriesList';
 import {books} from '../../data/books';
 import Book from '../../components/book-component/Book';
-import {Dimensions} from 'react-native';
-import Carousel from 'react-native-reanimated-carousel';
-import {IMAGES} from '../../../utils/images-path';
+import Slider from '../../components/slider/Slider';
 
 const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState(1);
   const [showFilteredData, setShowFilteredData] = useState(false);
   const [filteredBooks, setFilteredBooks] = useState([]);
-  const width = Dimensions.get('window').width;
 
   const handleTabPress = (id, categoryName) => {
     setSelectedTab(id);
@@ -54,52 +51,7 @@ const Dashboard = () => {
         <View style={styles.contentContainer}>
           <Header title={constants.SCREEN_NAME} />
           <SearchBar searchHandler={handleSearch} />
-          <View style={styles.sliderContainer}>
-            {/* <View style={styles.sliderContent}> */}
-            <FlatList
-              data={books}
-              horizontal
-              keyExtractor={item => item.id}
-              pagingEnabled
-              renderItem={({item, index}) => (
-                <View style={styles.sliderContentContainer}>
-                  <View style={styles.arrowContainer}>
-                    <Fontawesome
-                      name="arrow-left"
-                      size={15}
-                      color={COLORS.white}
-                    />
-                  </View>
-                  <View style={styles.sliderBookContainer}>
-                    <View>
-                      <Text style={styles.bookTitle}>{item.name}</Text>
-                      <Text style={styles.bookAuthor}>{item.author}</Text>
-                      <TouchableWithoutFeedback>
-                        <View style={styles.sliderButton}>
-                          <Text style={styles.sliderButtonText}>
-                            Start Reading
-                          </Text>
-                        </View>
-                      </TouchableWithoutFeedback>
-                    </View>
-                    <Image
-                      style={styles.slider}
-                      resizeMode="cover"
-                      source={IMAGES.book1}
-                    />
-                  </View>
-                  <View style={styles.arrowContainer}>
-                    <Fontawesome
-                      name="arrow-right"
-                      size={15}
-                      color={COLORS.white}
-                    />
-                  </View>
-                </View>
-              )}
-            />
-            {/* </View> */}
-          </View>
+          <Slider />
           <View style={styles.sectionsContainer}>
             <View style={styles.activeTab}>
               <Text style={[styles.sectionText, styles.activeSection]}>

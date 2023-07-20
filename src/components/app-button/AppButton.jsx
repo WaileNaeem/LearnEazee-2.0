@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.Avenir,
     fontWeight: '400',
     fontSize: 16,
+    color: COLORS.black1,
   },
   buttonStyle: {
     backgroundColor: COLORS.white,

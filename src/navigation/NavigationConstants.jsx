@@ -14,4 +14,5 @@ export const Navigation = {
   ALL_CATEGORIES: 'all-categories-screen',
   CART: 'cart-screen',
   READER_DASHBOARD: 'reader-dashboard-screen',
+  ADD_TO_CART: 'add-to-cart-screen',
 };
