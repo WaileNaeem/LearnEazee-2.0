@@ -87,7 +87,7 @@ const Dashboard = () => {
               )}
             />
           </View>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.booksContainer}>
               {showFilteredData ? (
                 filteredBooks.length == 0 ? (

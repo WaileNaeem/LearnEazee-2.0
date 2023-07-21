@@ -15,4 +15,6 @@ export const Navigation = {
   CART: 'cart-screen',
   READER_DASHBOARD: 'reader-dashboard-screen',
   ADD_TO_CART: 'add-to-cart-screen',
+  MY_CART: 'my-cart-screen',
+  CHECKOUT: 'checkout-screen',
 };

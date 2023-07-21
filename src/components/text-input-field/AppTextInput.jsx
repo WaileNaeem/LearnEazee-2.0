@@ -10,9 +10,16 @@ import {COLORS} from '../../../utils/colors';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
-const AppTextInput = ({maxLength, icon, errorStyles, iconPress, ...props}) => {
+const AppTextInput = ({
+  maxLength,
+  icon,
+  errorStyles,
+  textInputStyle,
+  iconPress,
+  ...props
+}) => {
   return (
-    <View style={[styles.inputFieldContainer, errorStyles]}>
+    <View style={[styles.inputFieldContainer, errorStyles, textInputStyle]}>
       <TextInput
         style={styles.inputField}
         placeholderTextColor={COLORS.grey3}

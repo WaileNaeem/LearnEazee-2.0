@@ -13,8 +13,12 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: '3%',
   },
-  bookImage: {},
+  bookImage: {
+    height: '100%',
+    width: '100%',
+  },
   bookDetailsContainer: {
     flexDirection: 'row',
     flex: 0.8,
@@ -58,9 +62,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   licenseTextContainer: {
-    width: '45%',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 50,
   },
   lisenceText: {
     fontFamily: FONTS.Avenir,
@@ -73,23 +79,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  addToCartButtonContainer: {
+  addToCartButton: {
     backgroundColor: COLORS.black1,
-    marginVertical: '3%',
+    marginBottom: '3%',
     borderColor: COLORS.black1,
     borderWidth: 1,
+    marginTop: '20%',
   },
   addToCartButtonText: {
     color: COLORS.white,
   },
-  checkoutButtonContainer: {
+  checkoutButton: {
     borderColor: COLORS.black1,
     borderWidth: 1,
-  },
-  buttonsContainer: {
-    flex: 1,
-    marginTop: '10%',
-    justifyContent: 'flex-end',
   },
 });
 export default styles;

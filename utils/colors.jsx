@@ -10,6 +10,7 @@ export const COLORS = {
   pink4: '#F3BABC',
   white: '#FFFFFF',
   white1: '#F5F5F5',
+  black: '#000000',
   black1: '#191D28',
   black2: '#000000',
   black3: '#010227',

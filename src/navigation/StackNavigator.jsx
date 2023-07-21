@@ -8,18 +8,18 @@ import DrawerNavigator from './DrawerNavigator';
 import SignupScreen from '../screens/signup-screen/SignupScreen';
 import LoginScreen from '../screens/login-screen/LoginScreen';
 import PrivacyPolicyScreen from '../screens/privacy-policy-screen/PrivacyPolicyScreen';
-import Sidebar from '../components/sidebar/Sidebar';
 import VerifyEmail from '../screens/verify-email-screen/VerifyEmail';
 import ResetPassword from '../screens/reset-password-screen/ResetPassword';
 import AllDone from '../screens/all-done-screen/AllDone';
-import AddToCart from '../screens/add-to-cart-screen/AddToCart';
+// import AddToCart from '../screens/add-to-cart-screen/AddToCart';
+// import MyCart from '../screens/my-cart-screen/MyCart';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Navigation.ADD_TO_CART}>
+      initialRouteName={Navigation.CHECKOUT}>
       <Stack.Screen name={Navigation.DRAWER} component={DrawerNavigator} />
       <Stack.Screen name={Navigation.SPLASH} component={SplashScreen} />
       <Stack.Screen name={Navigation.SPLASH_ONE} component={SplashOne} />
@@ -43,7 +43,8 @@ const StackNavigator = () => {
         name={Navigation.PRIVACY_POLICY}
         component={PrivacyPolicyScreen}
       />
-      <Stack.Screen name={Navigation.ADD_TO_CART} component={AddToCart} />
+      {/* <Stack.Screen name={Navigation.ADD_TO_CART} component={AddToCart} />
+      <Stack.Screen name={Navigation.MY_CART} component={MyCart} /> */}
     </Stack.Navigator>
   );
 };

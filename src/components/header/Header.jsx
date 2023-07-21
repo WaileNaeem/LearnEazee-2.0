@@ -1,15 +1,23 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import React from 'react';
 import {FONTS} from '../../../utils/font-family';
 import {COLORS} from '../../../utils/colors';
 import {IMAGES} from '../../../utils/images-path';
 
-const Header = ({title}) => {
+const Header = ({title, onMenuPress}) => {
   return (
     <View style={styles.headerContainer}>
-      <View>
-        <Image source={IMAGES.menuLogo} style={styles.menuLogo} />
-      </View>
+      <TouchableWithoutFeedback onPress={() => onMenuPress()}>
+        <View>
+          <Image source={IMAGES.menuLogo} style={styles.menuLogo} />
+        </View>
+      </TouchableWithoutFeedback>
       <View>
         <Text style={styles.screenName}>{title}</Text>
       </View>
@@ -30,6 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: '2%',
+    paddingHorizontal: '2%',
   },
   screenName: {
     fontWeight: '400',
