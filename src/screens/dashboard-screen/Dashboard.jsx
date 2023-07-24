@@ -14,7 +14,6 @@ import styles from './styles';
 import {constants} from './constants';
 import Header from '../../components/header/Header';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import Fontawesome from 'react-native-vector-icons/FontAwesome';
 import {COLORS} from '../../../utils/colors';
 import SearchBar from '../../components/search-bar/SearchBar';
 import {categories} from '../../data/categories';

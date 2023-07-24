@@ -5,17 +5,17 @@ import {Navigation} from './NavigationConstants';
 import Dashboard from '../screens/dashboard-screen/Dashboard';
 import AllCategories from '../screens/all-categories-screen/AllCategories';
 import ReaderDashboard from '../screens/reader-dashboard-screen.jsx/ReaderDashboard';
-import Cart from '../screens/cart-screen/Cart';
 import {COLORS} from '../../utils/colors';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {IMAGES} from '../../utils/images-path';
+import ExampleCart from '../screens/example-cart-screen/ExampleCart';
 
 const Tab = createBottomTabNavigator();
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
-      // initialRouteName={Navigation.DASHBOARD}
+      initialRouteName={Navigation.CART}
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: COLORS.pink3,
@@ -78,8 +78,8 @@ const BottomTabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name={Navigation.CART}
-        component={Cart}
+        name={Navigation.EXAMPLE_CART}
+        component={ExampleCart}
         options={{
           tabBarLabel: 'Cart',
           tabBarIcon: ({size, color}) => (

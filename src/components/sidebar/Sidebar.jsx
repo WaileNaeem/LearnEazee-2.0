@@ -4,14 +4,12 @@ import styles from './styles';
 import {IMAGES} from '../../../utils/images-path';
 import AppButton from '../app-button/AppButton';
 import Footer from '../footer/Footer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, DrawerActions} from '@react-navigation/native';
 
 const Sidebar = () => {
-  const email = AsyncStorage.getItem('uid');
   const navigation = useNavigation();
   const handleDrawer = () => {
-    navigation.closeDrawer();
+    navigation.dispatch(DrawerActions.closeDrawer());
   };
   return (
     <View style={styles.mainContainer}>

@@ -6,8 +6,9 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     paddingHorizontal: '3%',
-    borderColor: 'red',
-    borderWidth: 1,
+  },
+  scrollView: {
+    flex: 1,
   },
   headingTextStyles: {
     fontFamily: FONTS.AccentGraphic,
@@ -23,12 +24,13 @@ const styles = StyleSheet.create({
   adjacentTextField: {
     width: '45%',
   },
-  continueButton: {
-    backgroundColor: COLORS.black1,
+  buttonContainer: {
     marginTop: '15%',
   },
-  buttonText: {
-    color: COLORS.white,
+  errorMsg: {
+    color: 'red',
+    alignSelf: 'flex-start',
+    fontSize: 12,
   },
 });
 export default styles;

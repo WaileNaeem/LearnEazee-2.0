@@ -4,6 +4,8 @@ import api from '../api/baseApi';
 export const generateSchema = params => {
   const keys = Object?.keys(params);
   const schema = {};
+  const capitalizeFirstLetter = str =>
+    `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
   keys?.map(key => {
     if (key.indexOf('email') !== -1) {
       schema[key] = yup
@@ -56,7 +58,9 @@ export const generateSchema = params => {
         )
         ?.required('Last name is required');
     } else {
-      schema[key] = yup?.string().required(`${key} is required`);
+      schema[key] = yup
+        ?.string()
+        .required(`${capitalizeFirstLetter(key)} is required`);
     }
   });
   return yup.object()?.shape(schema);

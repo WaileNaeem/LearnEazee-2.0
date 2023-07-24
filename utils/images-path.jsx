@@ -24,4 +24,9 @@ export const IMAGES = {
   libraryIconActive: require('../assets/libraryIconActive.png'),
   libraryIconInactive: require('../assets/libraryIconInactive.png'),
   bookImage11: require('../assets/Book2.jpg'),
+  paypalLogo: require('../assets/paypalLogo.png'),
+  MasterCardLogo: require('../assets/MasterCard.png'),
+  ViasLogo: require('../assets/visa.png'),
+  AmericanExpressLogo: require('../assets/AmericanExpress.png'),
+  DiscoverLogo: require('../assets/Discover.png'),
 };
