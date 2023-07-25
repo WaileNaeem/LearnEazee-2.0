@@ -9,7 +9,7 @@ const AppButton = ({
   textStyle = {color: COLORS.black1},
   onPress,
   isValid,
-  color = 'white',
+  color,
 }) => {
   return (
     <TouchableOpacity

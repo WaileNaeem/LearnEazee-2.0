@@ -6,3 +6,9 @@ export const constants = {
   EXPIRY_PLACEHOLDER: 'Expiry',
   CONTINUE: 'Continue',
 };
+export const keys = {
+  CARD_HOLDER_NAME: 'cardHolderName',
+  CARD_NUMBER: 'cardNumber',
+  CVV: 'cvv',
+  EXPIRY: 'expiry',
+};

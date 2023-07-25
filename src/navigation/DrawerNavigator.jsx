@@ -8,6 +8,7 @@ import CheckoutScreen from '../screens/checkout-screen/CheckoutScreen';
 import CartScreen from '../screens/cart-screen/CartScreen';
 import OrderPlaced from '../screens/order-placed-screen/OrderPlaced';
 import PaymentMethodScreen from '../screens/payment-method-screen/PaymentMethodScreen';
+import {BackHandler} from 'react-native';
 
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
@@ -16,15 +17,15 @@ const DrawerNavigator = () => {
       screenOptions={{headerShown: false, drawerStyle: {width: '85%'}}}
       initialRouteName={Navigation.CHECKOUT}
       drawerContent={() => <Sidebar />}>
-      <Drawer.Screen name={Navigation.TAB} component={BottomTabsNavigator} />
       <Drawer.Screen name={Navigation.CHECKOUT} component={CheckoutScreen} />
-      <Drawer.Screen name={Navigation.MY_CART} component={MyCart} />
-      <Drawer.Screen name={Navigation.CART} component={CartScreen} />
-      <Drawer.Screen name={Navigation.ORDER_PLACED} component={OrderPlaced} />
       <Drawer.Screen
         name={Navigation.PAYMENT}
         component={PaymentMethodScreen}
       />
+      <Drawer.Screen name={Navigation.TAB} component={BottomTabsNavigator} />
+      <Drawer.Screen name={Navigation.MY_CART} component={MyCart} />
+      <Drawer.Screen name={Navigation.CART} component={CartScreen} />
+      <Drawer.Screen name={Navigation.ORDER_PLACED} component={OrderPlaced} />
     </Drawer.Navigator>
   );
 };

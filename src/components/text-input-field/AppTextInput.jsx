@@ -8,7 +8,6 @@ import {
 import React, {useState} from 'react';
 import {COLORS} from '../../../utils/colors';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const AppTextInput = ({
   maxLength,

@@ -25,12 +25,11 @@ const styles = StyleSheet.create({
     width: '45%',
   },
   buttonContainer: {
-    marginTop: '15%',
+    paddingVertical: '15%',
   },
   errorMsg: {
     color: 'red',
     alignSelf: 'flex-start',
-    fontSize: 12,
   },
 });
 export default styles;

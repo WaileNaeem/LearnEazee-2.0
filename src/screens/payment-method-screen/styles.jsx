@@ -41,11 +41,11 @@ const styles = StyleSheet.create({
     width: '20%',
   },
   continueButton: {
-    backgroundColor: COLORS.black1,
     marginBottom: '15%',
   },
-  buttonText: {
-    color: COLORS.white,
+  errorMsg: {
+    color: 'red',
+    alignSelf: 'flex-start',
   },
 });
 

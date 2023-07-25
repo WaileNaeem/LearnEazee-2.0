@@ -1,8 +1,8 @@
 import * as yup from 'yup';
-import api from '../api/baseApi';
 
 export const generateSchema = params => {
-  const keys = Object?.keys(params);
+  // const keys = Object?.keys(params);
+  const keys = Object.keys(params).filter(key => key);
   const schema = {};
   const capitalizeFirstLetter = str =>
     `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
@@ -13,21 +13,6 @@ export const generateSchema = params => {
         ?.email('Email must be valid')
         ?.matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter valid email')
         ?.required('Email address is required');
-      // ?.test('unique-email', 'Email already exists', async function (value) {
-      //   const response = await api.post('/api/v1/auth', {
-      //     email: value,
-      //   });
-      //   console.log(response.data);
-      //   const errorMessage = 'Email already exists';
-      //   const {path, createError} = this;
-      //   const emailTakenMessage = response?.data?.message?.includes(
-      //     'Email has already been taken',
-      //   );
-      //   const emailExists = response?.data?.success;
-      //   if (emailTakenMessage && emailExists) {
-      //     return createError({path, message: errorMessage});
-      //   }
-      // });
     } else if (key.indexOf('password') !== -1) {
       schema[key] = yup
         ?.string()
@@ -57,11 +42,43 @@ export const generateSchema = params => {
           'Please enter valid last name',
         )
         ?.required('Last name is required');
+    } else if (key.indexOf('cardNumber') !== -1) {
+      schema[key] = yup
+        ?.string()
+        ?.max(16)
+        ?.required('Required')
+        ?.matches(/^[0-9]+$/, 'Only Numbers are allowed');
+    } else if (key.indexOf('cvv') !== -1) {
+      schema[key] = yup
+        ?.number()
+        ?.typeError('Only Numbers are allowed')
+        ?.max(3)
+        ?.required('Required');
+    } else if (key.indexOf('expiry') !== -1) {
+      schema[key] = yup
+        ?.number()
+        ?.typeError('Only Numbers are allowed')
+        ?.required('Required');
+    } else if (key.indexOf('cardHolderName') !== -1) {
+      schema[key] = yup?.string()?.required('Required');
+    } else if (key.indexOf('country') !== -1) {
+      schema[key] = yup?.string()?.required('Country/Region is required');
+    } else if (key.indexOf('postalCode') !== -1) {
+      schema[key] = yup
+        ?.number()
+        ?.typeError('Only Numbers are allowed')
+        ?.required('Postal Code is required');
+    } else if (key.indexOf('phone') !== -1) {
+      schema[key] = yup
+        ?.number()
+        ?.typeError('Only Numbers are allowed')
+        ?.required('Phone Number is required');
     } else {
       schema[key] = yup
         ?.string()
         .required(`${capitalizeFirstLetter(key)} is required`);
     }
   });
+  // schema['country'] = yup.string().required('Country/Region is required');
   return yup.object()?.shape(schema);
 };

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {COLORS} from '../../../utils/colors';
 import {FONTS} from '../../../utils/font-family';
 DropDownPicker.setListMode('SCROLLVIEW');
 
-const CountryDropdown = () => {
+const CountryDropdown = ({onValueChange}) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -15,13 +15,24 @@ const CountryDropdown = () => {
     {label: 'Portugal', value: 'Portugal'},
     {label: 'Pakistan ', value: 'Pakistan'},
   ]);
+  useEffect(() => {
+    if (!value || !items.some(item => item.value === value)) {
+      setValue('Country/Region');
+    }
+  }, [value, items]);
+  const handleValueChange = itemValue => {
+    setValue(itemValue);
+    if (onValueChange) {
+      onValueChange(itemValue);
+    }
+  };
   return (
     <DropDownPicker
       open={open}
       value={value}
       items={items}
       setOpen={setOpen}
-      setValue={setValue}
+      setValue={handleValueChange}
       setItems={setItems}
       disableBorderRadius={true}
       style={{
@@ -41,7 +52,7 @@ const CountryDropdown = () => {
         fontFamily: FONTS.Avenir,
       }}
       dropDownContainerStyle={{
-        backgroundColor: COLORS.white1,
+        backgroundColor: COLORS.white,
         borderRadius: 0,
       }}
       placeholder="Country/Region"
