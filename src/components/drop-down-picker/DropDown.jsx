@@ -23,7 +23,7 @@ const DropDown = () => {
       setItems={setItems}
       disableBorderRadius={true}
       style={{
-        backgroundColor: COLORS.white1,
+        backgroundColor: COLORS.white,
         borderRadius: 0,
       }}
       textStyle={{
@@ -32,7 +32,7 @@ const DropDown = () => {
         fontWeight: '400',
         fontFamily: FONTS.Avenir,
       }}
-      dropDownContainerStyle={{backgroundColor: COLORS.white1, borderRadius: 0}}
+      dropDownContainerStyle={{backgroundColor: COLORS.white, borderRadius: 0}}
       placeholder="Select seats of license"
       placeholderStyle={{
         color: COLORS.grey1,

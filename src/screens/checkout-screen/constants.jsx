@@ -11,6 +11,7 @@ export const constants = {
   POSTAL_CODE_PLACEHOLDER: 'Postal Code',
   PHONE_PLACEHOLDER: 'Phone',
   CONTINUE: 'Continue',
+  CHECKOUT: 'CheckoutScreen',
 };
 export const keys = {
   FIRST_NAME_KEY: 'firstName',

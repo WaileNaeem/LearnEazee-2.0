@@ -28,9 +28,6 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: COLORS.grey3,
-    borderWidth: 1,
-    borderRadius: 3,
   },
   searchBarIcon: {
     width: '10%',

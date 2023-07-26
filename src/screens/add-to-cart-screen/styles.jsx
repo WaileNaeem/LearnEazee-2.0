@@ -55,7 +55,15 @@ const styles = StyleSheet.create({
     color: COLORS.pink3,
   },
   ratingsContainer: {
+    flexDirection: 'row',
     alignItems: 'flex-start',
+  },
+  ratings: {
+    color: COLORS.black1,
+    fontFamily: FONTS.Avenir,
+    fontSize: 14,
+    fontWeight: '400',
+    marginLeft: 2,
   },
   licenseContainer: {
     flex: 0.4,

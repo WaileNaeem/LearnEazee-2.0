@@ -5,7 +5,7 @@ import {FONTS} from '../../../utils/font-family';
 import {COLORS} from '../../../utils/colors';
 import {useNavigation} from '@react-navigation/native';
 import {Navigation} from '../../navigation/NavigationConstants';
-import {addToCart} from '../../redux-toolkit/slice/CartSlice';
+import {addToCart} from '../../redux-toolkit/slices/CartSlice';
 import {useDispatch} from 'react-redux';
 
 const Book = ({book}) => {
@@ -39,7 +39,7 @@ export default Book;
 const styles = StyleSheet.create({
   singlebookContainer: {
     marginVertical: '2%',
-    marginHorizontal: '1.7%',
+    marginHorizontal: '1.5%',
   },
   booksDetails: {
     flexDirection: 'row',

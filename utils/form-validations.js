@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const generateSchema = params => {
+export const generateSchema = (params, screenName) => {
   // const keys = Object?.keys(params);
   const keys = Object.keys(params).filter(key => key);
   const schema = {};
@@ -52,7 +52,6 @@ export const generateSchema = params => {
       schema[key] = yup
         ?.number()
         ?.typeError('Only Numbers are allowed')
-        ?.max(3)
         ?.required('Required');
     } else if (key.indexOf('expiry') !== -1) {
       schema[key] = yup
@@ -61,9 +60,11 @@ export const generateSchema = params => {
         ?.required('Required');
     } else if (key.indexOf('cardHolderName') !== -1) {
       schema[key] = yup?.string()?.required('Required');
-    } else if (key.indexOf('country') !== -1) {
-      schema[key] = yup?.string()?.required('Country/Region is required');
-    } else if (key.indexOf('postalCode') !== -1) {
+    }
+    // else if (key.indexOf('country') !== -1) {
+    //   schema[key] = yup?.string()?.required('Country/Region is required');
+    // }
+    else if (key.indexOf('postalCode') !== -1) {
       schema[key] = yup
         ?.number()
         ?.typeError('Only Numbers are allowed')
@@ -79,6 +80,8 @@ export const generateSchema = params => {
         .required(`${capitalizeFirstLetter(key)} is required`);
     }
   });
-  // schema['country'] = yup.string().required('Country/Region is required');
+  if (screenName === 'CheckoutScreen') {
+    schema['country'] = yup.string().required('Country/Region is required');
+  }
   return yup.object()?.shape(schema);
 };

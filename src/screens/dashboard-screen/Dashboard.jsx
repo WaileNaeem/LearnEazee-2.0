@@ -5,7 +5,6 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Text,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -21,11 +20,16 @@ import CategoriesList from '../../components/categories-list/CategoriesList';
 import {books} from '../../data/books';
 import Book from '../../components/book-component/Book';
 import Slider from '../../components/slider/Slider';
+import AppScreen from '../../components/app-screen';
+import Sections from '../../components/sections-component/Sections';
+import {useNavigation} from '@react-navigation/native';
+import {Navigation} from '../../navigation/NavigationConstants';
 
 const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState(1);
   const [showFilteredData, setShowFilteredData] = useState(false);
   const [filteredBooks, setFilteredBooks] = useState([]);
+  const navigation = useNavigation();
 
   const handleTabPress = (id, categoryName) => {
     setSelectedTab(id);
@@ -44,68 +48,71 @@ const Dashboard = () => {
     setFilteredBooks(filter);
     setShowFilteredData(true);
   };
+  const handleViewMore = () => {
+    navigation.navigate(Navigation.ALL_CATEGORIES);
+  };
   return (
-    <KeyboardAvoidingView style={styles.mainContainer}>
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View style={styles.contentContainer}>
-          <Header title={constants.SCREEN_NAME} />
-          <SearchBar searchHandler={handleSearch} />
-          <Slider />
-          <View style={styles.sectionsContainer}>
-            <View style={styles.activeTab}>
-              <Text style={[styles.sectionText, styles.activeSection]}>
+    <AppScreen>
+      <KeyboardAvoidingView style={styles.mainContainer}>
+        <Header title={constants.SCREEN_NAME} />
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={styles.contentContainer}>
+            <SearchBar searchHandler={handleSearch} />
+            <Slider />
+            <Sections />
+            <View style={styles.categoriesSectionContainer}>
+              <Text style={styles.categoriesHeading}>
                 {constants.CATEGORIES}
               </Text>
-            </View>
-            <View>
-              <Text style={styles.sectionText}>{constants.NEW_ARRIVAL}</Text>
-            </View>
-            <View>
-              <Text style={styles.sectionText}>{constants.POPULAR_BOOKS}</Text>
-            </View>
-          </View>
-          <View style={styles.categoriesSectionContainer}>
-            <Text style={styles.categoriesHeading}>{constants.CATEGORIES}</Text>
-            <View style={styles.viewMoreContainer}>
-              <Text style={styles.viewMoreText}>{constants.VIEW_MORE}</Text>
-              <FeatherIcon name="arrow-right" size={15} color={COLORS.pink3} />
-            </View>
-          </View>
-          <View style={styles.categoriesContainer}>
-            <FlatList
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={categories}
-              keyExtractor={category => category.id}
-              renderItem={({item}) => (
-                <CategoriesList
-                  item={item}
-                  isActive={item.id == selectedTab ? true : false}
-                  onItemPress={handleTabPress}
+              <View style={styles.viewMoreContainer}>
+                <Text onPress={handleViewMore} style={styles.viewMoreText}>
+                  {constants.VIEW_MORE}
+                </Text>
+                <FeatherIcon
+                  name="arrow-right"
+                  size={15}
+                  color={COLORS.pink3}
                 />
-              )}
-            />
-          </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.booksContainer}>
-              {showFilteredData ? (
-                filteredBooks.length == 0 ? (
-                  <Text style={styles.noBookError}>
-                    {constants.NO_BOOK_FOUND}
-                  </Text>
-                ) : (
-                  filteredBooks.map(book => <Book book={book} key={book.id} />)
-                )
-              ) : (
-                books
-                  .slice(0, 8)
-                  .map(book => <Book book={book} key={book.id} />)
-              )}
+              </View>
             </View>
-          </ScrollView>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+            <View style={styles.categoriesContainer}>
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={categories}
+                keyExtractor={category => category.id}
+                renderItem={({item}) => (
+                  <CategoriesList
+                    item={item}
+                    isActive={item.id == selectedTab ? true : false}
+                    onItemPress={handleTabPress}
+                  />
+                )}
+              />
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={styles.booksContainer}>
+                {showFilteredData ? (
+                  filteredBooks.length == 0 ? (
+                    <Text style={styles.noBookError}>
+                      {constants.NO_BOOK_FOUND}
+                    </Text>
+                  ) : (
+                    filteredBooks.map(book => (
+                      <Book book={book} key={book.id} />
+                    ))
+                  )
+                ) : (
+                  books
+                    .slice(0, 8)
+                    .map(book => <Book book={book} key={book.id} />)
+                )}
+              </View>
+            </ScrollView>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </AppScreen>
   );
 };
 

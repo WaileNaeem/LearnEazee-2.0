@@ -1,5 +1,12 @@
-import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {
+  BackHandler,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, {useEffect} from 'react';
 import AppScreen from '../../components/app-screen';
 import Header from '../../components/header/Header';
 import {IMAGES} from '../../../utils/images-path';
@@ -17,6 +24,17 @@ const OrderPlaced = () => {
   const onMenuPress = () => {
     navigation.openDrawer();
   };
+  useEffect(() => {
+    const backAction = () => {
+      navigation.replace(Navigation.DASHBOARD);
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, []);
   return (
     <AppScreen>
       <ImageBackground

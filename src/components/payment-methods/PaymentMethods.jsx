@@ -1,4 +1,4 @@
-import {Image, Pressable, View} from 'react-native';
+import {Image, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
 import {IMAGES} from '../../../utils/images-path';
@@ -33,18 +33,18 @@ const PaymentMethods = () => {
   return (
     <>
       {paymentMethod.map(payment => (
-        <Pressable key={payment.id} onPress={() => handleTabPress(payment.id)}>
-          <View
-            style={[
-              styles.mainContainer,
-              selectedId === payment.id && styles.activeTab,
-            ]}>
-            <Image
-              source={payment.image}
-              resizeMode="contain"
-              style={styles.image}
-            />
-          </View>
+        <Pressable
+          key={payment.id}
+          onPress={() => handleTabPress(payment.id)}
+          style={[
+            styles.mainContainer,
+            selectedId === payment.id && styles.activeTab,
+          ]}>
+          <Image
+            source={payment.image}
+            resizeMode="contain"
+            style={styles.image}
+          />
         </Pressable>
       ))}
     </>

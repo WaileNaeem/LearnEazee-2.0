@@ -1,10 +1,10 @@
-import {View, Text, ScrollView, Image} from 'react-native';
-import React, {useState} from 'react';
+import {View, Text, Image} from 'react-native';
+import React from 'react';
 import styles from './styles';
 import Header from '../../components/header/Header';
 import {constants} from './constants';
 import {IMAGES} from '../../../utils/images-path';
-import {Rating, AirbnbRating} from 'react-native-ratings';
+import {AirbnbRating} from 'react-native-ratings';
 import DropDown from '../../components/drop-down-picker/DropDown';
 import AppButton from '../../components/app-button/AppButton';
 import AppScreen from '../../components/app-screen';
@@ -14,7 +14,6 @@ import {Navigation} from '../../navigation/NavigationConstants';
 const AddToCart = ({route}) => {
   const navigation = useNavigation();
   const {product} = route.params;
-  // console.log(product);
   const onMenuPress = () => {
     navigation.openDrawer();
   };
@@ -48,10 +47,14 @@ const AddToCart = ({route}) => {
                 showRating={false}
                 defaultRating={5}
               />
+              <Text style={styles.ratings}>({product.rating})</Text>
             </View>
           </View>
           <View style={styles.bookPriceContainer}>
-            <Text style={styles.bookPrice}>Price: ${product.price}</Text>
+            <Text style={styles.bookPrice}>
+              {constants.Price}
+              {product.price}
+            </Text>
           </View>
         </View>
         <View style={styles.licenseTextContainer}>

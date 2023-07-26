@@ -18,14 +18,14 @@ const CheckoutScreen = () => {
   const [selectedCountry, setSelectedCountry] = useState('');
   const navigation = useNavigation();
   const userDetails = {
-    firstName: 'aa',
-    lastName: 'dd',
-    email: 'a@A.com',
-    address: 'a',
-    city: 'dd',
-    postalCode: '123456',
-    phone: '0258888',
-    country: 'pk',
+    firstName: '',
+    lastName: '',
+    email: '',
+    address: '',
+    city: '',
+    postalCode: '',
+    phone: '',
+    country: '',
   };
   const onMenuPress = () => {
     navigation.openDrawer();
@@ -33,7 +33,7 @@ const CheckoutScreen = () => {
   const {handleBlur, handleSubmit, touched, errors, values, setValues} =
     useFormik({
       initialValues: userDetails,
-      validationSchema: generateSchema(userDetails),
+      validationSchema: generateSchema(userDetails, constants.CHECKOUT),
       onSubmit: values => {
         values.country = selectedCountry;
         const userInfo = {...values, appartment};

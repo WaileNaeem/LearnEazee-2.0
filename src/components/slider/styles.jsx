@@ -9,22 +9,19 @@ const styles = StyleSheet.create({
     marginVertical: '5%',
     color: COLORS.white,
   },
-  sliderContent: {
-    flex: 1,
-    borderColor: 'red',
-    borderWidth: 1,
-  },
+
   sliderContentContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    width: '100%',
     marginHorizontal: 5,
     backgroundColor: COLORS.pink3,
     borderRadius: 8,
+    width: 282,
   },
-  slider: {
-    flex: 1,
+  bookImage: {
+    width: 74,
+    height: 106,
+    marginRight: 5,
   },
   arrowContainer: {
     borderColor: COLORS.pink1,
@@ -34,11 +31,11 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     alignSelf: 'center',
-    marginHorizontal: 5,
   },
   sliderBookContainer: {
+    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   bookTitle: {
@@ -56,10 +53,11 @@ const styles = StyleSheet.create({
   sliderButton: {
     borderColor: COLORS.white,
     borderWidth: 1,
-    width: '50%',
+    width: 65,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.white,
+    marginTop: '3%',
   },
   sliderButtonText: {
     color: COLORS.pink3,
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 8,
   },
   booksDetailsContainer: {
-    height: '50%',
+    width: '60%',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     padding: 10,

@@ -6,6 +6,7 @@ export const books = [
     category: 'Novel',
     author: 'Nicole Trope',
     price: 67,
+    rating: 10,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const books = [
     category: 'Management',
     author: 'Dan Koe',
     price: 77,
+    rating: 20,
   },
   {
     id: 3,
@@ -22,30 +24,34 @@ export const books = [
     category: 'Novel',
     author: 'Laurel Ann',
     price: 56,
+    rating: 30,
   },
   {
     id: 4,
-    name: 'Rich Dad Poor Dad',
+    name: 'Lord of the Rings',
     content_type: 'Paid',
     category: 'Management',
     author: 'Jim Browning',
     price: 46,
+    rating: 50,
   },
   {
     id: 5,
-    name: 'The Power of Focus',
+    name: 'Jane Eyre',
     content_type: 'Paid',
     category: 'Novel',
     author: 'Alope Fall',
     price: 67,
+    rating: 40,
   },
   {
     id: 6,
-    name: 'Rich Dad Poor Dad',
+    name: 'Pride and Prejudice',
     content_type: 'Paid',
     category: 'Management',
     author: 'Barbina Ye',
     price: 22,
+    rating: 60,
   },
   {
     id: 7,
@@ -54,6 +60,7 @@ export const books = [
     category: 'Novel',
     author: 'Mastor Lee',
     price: 55,
+    rating: 70,
   },
   {
     id: 8,
@@ -62,6 +69,7 @@ export const books = [
     category: 'Management',
     author: 'Jessica Chan',
     price: 47,
+    rating: 80,
   },
   {
     id: 9,
@@ -70,6 +78,7 @@ export const books = [
     category: 'Novel',
     author: 'Kate Smith',
     price: 85,
+    rating: 90,
   },
   {
     id: 10,
@@ -78,5 +87,6 @@ export const books = [
     category: 'Novel',
     author: 'Lily Chen',
     price: 25,
+    rating: 100,
   },
 ];

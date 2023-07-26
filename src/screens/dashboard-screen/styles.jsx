@@ -10,26 +10,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
   },
-  sectionsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '85%',
-    marginBottom: '5%',
-  },
-  activeTab: {
-    borderBottomColor: COLORS.pink2,
-    borderBottomWidth: 1,
-    paddingBottom: 5,
-  },
-  sectionText: {
-    color: COLORS.grey1,
-    fontFamily: FONTS.Avenir,
-    fontWeight: '400',
-    fontSize: 12,
-  },
-  activeSection: {
-    color: COLORS.pink3,
-  },
   categoriesSectionContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
