@@ -3,4 +3,5 @@ export const constants = {
   TOTAL_AMOUNT: 'Total Amount',
   PRICE: 'Price: $',
   BY: 'by ',
+  EMPTY_CART: 'Cart is Empty',
 };

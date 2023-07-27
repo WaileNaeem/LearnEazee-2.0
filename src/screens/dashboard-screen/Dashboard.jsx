@@ -51,6 +51,7 @@ const Dashboard = () => {
   const handleViewMore = () => {
     navigation.navigate(Navigation.ALL_CATEGORIES);
   };
+
   return (
     <AppScreen>
       <KeyboardAvoidingView style={styles.mainContainer}>

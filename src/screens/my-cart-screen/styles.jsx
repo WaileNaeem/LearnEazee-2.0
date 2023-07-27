@@ -94,8 +94,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginRight: '3%',
   },
-  checkoutButton: {
-    backgroundColor: COLORS.black1,
+  buttonStyle: {
     marginVertical: '5%',
   },
   checkoutButtonText: {

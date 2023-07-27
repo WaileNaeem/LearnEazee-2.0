@@ -10,19 +10,36 @@ import AppButton from '../../components/app-button/AppButton';
 import AppScreen from '../../components/app-screen';
 import {useNavigation} from '@react-navigation/native';
 import {Navigation} from '../../navigation/NavigationConstants';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToCart} from '../../redux-toolkit/slices/CartSlice';
+import {resetSelectedLicense} from '../../redux-toolkit/slices/LicensceSeatsSlice';
 
 const AddToCart = ({route}) => {
   const navigation = useNavigation();
   const {product} = route.params;
+  const dispatch = useDispatch();
+  const selectedLicense = useSelector(state => state.license.selectedLicense);
+  console.log(selectedLicense);
+
   const onMenuPress = () => {
     navigation.openDrawer();
   };
-  const handleAddToCart = () => {
+  const handleAddToCart = product => {
+    const item = {
+      ...product,
+      quantity: selectedLicense,
+      totalPrice: product.price,
+    };
+    dispatch(addToCart(item));
+
+    // dispatch(resetSelectedLicense(item));
+
     navigation.navigate(Navigation.MY_CART);
   };
   const handleCheckout = () => {
     navigation.navigate(Navigation.CHECKOUT);
   };
+
   return (
     <AppScreen>
       <Header title={constants.ADD_TO_CART} onMenuPress={onMenuPress} />
@@ -67,7 +84,9 @@ const AddToCart = ({route}) => {
           title={constants.ADD_TO_CART}
           buttonStyle={styles.addToCartButton}
           textStyle={styles.addToCartButtonText}
-          onPress={handleAddToCart}
+          onPress={() => {
+            if (selectedLicense) handleAddToCart(product);
+          }}
         />
         <AppButton
           title={constants.CHECKOUT}

@@ -4,4 +4,5 @@ export const constants = {
   TOTAL_AMOUNT: 'Total Amount',
   PRICE: 'Price: $',
   CHECKOUT: 'Checkout',
+  DASHBOARD: 'Dashboard',
 };

@@ -83,5 +83,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginRight: '3%',
   },
+  emptyCartText: {
+    color: COLORS.black1,
+  },
+  emptyCartContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 export default styles;

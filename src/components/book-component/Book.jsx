@@ -5,8 +5,8 @@ import {FONTS} from '../../../utils/font-family';
 import {COLORS} from '../../../utils/colors';
 import {useNavigation} from '@react-navigation/native';
 import {Navigation} from '../../navigation/NavigationConstants';
-import {addToCart} from '../../redux-toolkit/slices/CartSlice';
 import {useDispatch} from 'react-redux';
+import {addToCart} from '../../redux-toolkit/slices/CartSlice';
 
 const Book = ({book}) => {
   const navigation = useNavigation();
@@ -15,8 +15,9 @@ const Book = ({book}) => {
     navigation.navigate(Navigation.ADD_TO_CART, {product: book});
   };
   const handleAddToCart = book => {
-    const item = {...book, quantity: 1};
+    const item = {...book, quantity: 1, totalPrice: book.price};
     dispatch(addToCart(item));
+    navigation.navigate(Navigation.MY_CART);
   };
   return (
     <View style={styles.singlebookContainer}>
