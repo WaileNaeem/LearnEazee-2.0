@@ -65,7 +65,10 @@ const SignupScreen = () => {
         if (response.ok) {
           setIsLoaderVisible(false);
           console.log(response.data);
-          navigation.navigate(Navigation.LOGIN);
+          navigation.reset({
+            index: 0,
+            routes: [{name: Navigation.LOGIN}],
+          });
         } else {
           setIsLoaderVisible(false);
           if (response?.data?.message?.includes(constants.EMAIL_TAKEN)) {

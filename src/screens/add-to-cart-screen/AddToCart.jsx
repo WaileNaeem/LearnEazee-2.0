@@ -13,6 +13,7 @@ import {Navigation} from '../../navigation/NavigationConstants';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../../redux-toolkit/slices/CartSlice';
 import {resetSelectedLicense} from '../../redux-toolkit/slices/LicensceSeatsSlice';
+import {IMAGE_RESIZE_MODE} from '../../../utils/constants';
 
 const AddToCart = ({route}) => {
   const navigation = useNavigation();
@@ -32,7 +33,7 @@ const AddToCart = ({route}) => {
     };
     dispatch(addToCart(item));
 
-    // dispatch(resetSelectedLicense(item));
+    dispatch(resetSelectedLicense(item));
 
     navigation.navigate(Navigation.MY_CART);
   };
@@ -47,7 +48,7 @@ const AddToCart = ({route}) => {
         <View style={styles.imageContainer}>
           <Image
             source={IMAGES.bookImage11}
-            resizeMode="contain"
+            resizeMode={IMAGE_RESIZE_MODE.contain}
             style={styles.bookImage}
           />
         </View>

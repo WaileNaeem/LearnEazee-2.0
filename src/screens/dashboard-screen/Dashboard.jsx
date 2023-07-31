@@ -19,7 +19,7 @@ import {categories} from '../../data/categories';
 import CategoriesList from '../../components/categories-list/CategoriesList';
 import {books} from '../../data/books';
 import Book from '../../components/book-component/Book';
-import Slider from '../../components/slider/Slider';
+import Slider from '../../components/slider-component/slider/Slider';
 import AppScreen from '../../components/app-screen';
 import Sections from '../../components/sections-component/Sections';
 import {useNavigation} from '@react-navigation/native';

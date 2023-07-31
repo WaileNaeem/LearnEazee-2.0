@@ -60,7 +60,11 @@ const LoginScreen = () => {
         await AsyncStorage.setItem('expiry', expiry);
         await AsyncStorage.setItem('uid', values?.email);
         console.log(response?.data?.message);
-        navigation.navigate(Navigation.DASHBOARD);
+        // navigation.navigate(Navigation.DASHBOARD);
+        navigation.reset({
+          index: 0,
+          routes: [{name: Navigation.DASHBOARD}],
+        });
       } else {
         setIsLoaderVisible(false);
         Alert.alert('', constants.LOGIN_FAIL);
