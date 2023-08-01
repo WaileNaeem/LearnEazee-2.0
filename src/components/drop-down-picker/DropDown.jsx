@@ -20,7 +20,7 @@ const DropDown = () => {
 
   const handleValueChange = itemValue => {
     setValue(itemValue);
-    dispatch(setSelectedLicense(value));
+    dispatch(setSelectedLicense(itemValue));
   };
   return (
     <DropDownPicker

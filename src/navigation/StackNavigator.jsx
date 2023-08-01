@@ -24,12 +24,16 @@ const StackNavigator = () => {
       <Stack.Screen
         name={Navigation.SIGNUP}
         component={SignupScreen}
-        ptions={{animationEnabled: false}}
+        options={{animationEnabled: false}}
       />
       <Stack.Screen
         name={Navigation.LOGIN}
         component={LoginScreen}
         options={{animationEnabled: false}}
+      />
+      <Stack.Screen
+        name={Navigation.PRIVACY_POLICY}
+        component={PrivacyPolicyScreen}
       />
       <Stack.Screen name={Navigation.VERIFY_EMAIL} component={VerifyEmail} />
       <Stack.Screen
@@ -37,10 +41,6 @@ const StackNavigator = () => {
         component={ResetPassword}
       />
       <Stack.Screen name={Navigation.ALL_DONE} component={AllDone} />
-      <Stack.Screen
-        name={Navigation.PRIVACY_POLICY}
-        component={PrivacyPolicyScreen}
-      />
     </Stack.Navigator>
   );
 };

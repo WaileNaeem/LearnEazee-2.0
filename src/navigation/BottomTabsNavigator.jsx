@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName={Navigation.DASHBOARD}
+      initialRouteName={Navigation.READER_DASHBOARD}
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: COLORS.pink3,

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     width: '45%',
     borderRadius: 50,
     height: '100%',
-    backgroundColor: COLORS.white,
+    elevation: 1,
   },
   socialLoginText: {
     color: COLORS.black1,

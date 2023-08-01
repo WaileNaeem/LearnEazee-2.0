@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     color: COLORS.black1,
+    flex: 1,
   },
   forgotPassword: {
     marginVertical: '5%',

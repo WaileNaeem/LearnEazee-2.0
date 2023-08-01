@@ -9,8 +9,9 @@ import {useNavigation} from '@react-navigation/native';
 
 const SplashOne = () => {
   const navigation = useNavigation();
+
   const handleNavigation = () => {
-    navigation.navigate(Navigation.SIGNUP);
+    navigation.navigate(Navigation.LOGIN);
   };
   return (
     <View style={styles.mainContainer}>

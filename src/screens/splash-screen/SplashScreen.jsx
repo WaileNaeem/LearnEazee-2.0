@@ -8,6 +8,7 @@ import styles from './styles';
 import {constant} from './constants';
 import {COLORS} from '../../../utils/colors';
 import {Navigation} from '../../navigation/NavigationConstants';
+import {useSelector} from 'react-redux';
 
 const SplashScreen = () => {
   // const [percentage, setPercentage] = useState(0);
@@ -31,7 +32,8 @@ const SplashScreen = () => {
   //     }, 300);
   //   }, 3000);
   // }, []);
-
+  const user = useSelector(state => state.authentication);
+  // console.log('splash isLoggedIn', user.isLoggedIn);
   const [percentage, setPercentage] = useState(0);
   const [progress, setProgress] = useState(0);
   const navigation = useNavigation();
@@ -53,7 +55,14 @@ const SplashScreen = () => {
         percentageValue = 100;
         progressIncrement = 1;
         clearIntervalHandler();
-        navigation.replace(Navigation.SPLASH_ONE);
+        if (user.isLoggedIn) {
+          navigation.reset({
+            index: 0,
+            routes: [{name: Navigation.DRAWER}],
+          });
+        } else {
+          navigation.replace(Navigation.SPLASH_ONE);
+        }
       }
 
       setPercentage(percentageValue);

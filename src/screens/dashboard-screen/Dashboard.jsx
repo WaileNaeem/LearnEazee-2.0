@@ -31,6 +31,10 @@ const Dashboard = () => {
   const [filteredBooks, setFilteredBooks] = useState([]);
   const navigation = useNavigation();
 
+  const onMenuPress = () => {
+    navigation.openDrawer();
+  };
+
   const handleTabPress = (id, categoryName) => {
     setSelectedTab(id);
     if (id === 1) {
@@ -55,7 +59,7 @@ const Dashboard = () => {
   return (
     <AppScreen>
       <KeyboardAvoidingView style={styles.mainContainer}>
-        <Header title={constants.SCREEN_NAME} />
+        <Header title={constants.SCREEN_NAME} onMenuPress={onMenuPress} />
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View style={styles.contentContainer}>
             <SearchBar searchHandler={handleSearch} />

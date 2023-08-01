@@ -1,5 +1,5 @@
-import {View, Text, TouchableWithoutFeedback, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import {Text, ScrollView} from 'react-native';
+import React from 'react';
 import AppScreen from '../../components/app-screen';
 import Header from '../../components/header/Header';
 import {constants} from './constants';
