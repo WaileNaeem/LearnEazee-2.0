@@ -11,13 +11,16 @@ import PrivacyPolicyScreen from '../screens/privacy-policy-screen/PrivacyPolicyS
 import VerifyEmail from '../screens/verify-email-screen/VerifyEmail';
 import ResetPassword from '../screens/reset-password-screen/ResetPassword';
 import AllDone from '../screens/all-done-screen/AllDone';
+import InteractiveBook from '../screens/interactive-book-screen/InteractiveBook';
+import TradionalBook from '../screens/traditional-book-screen/TradionalBook';
+import TestScreen from '../screens/test-screen/TestScreen';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={Navigation.DRAWER}>
+      initialRouteName={Navigation.TEST_SCREEN}>
       <Stack.Screen name={Navigation.DRAWER} component={DrawerNavigator} />
       <Stack.Screen name={Navigation.SPLASH} component={SplashScreen} />
       <Stack.Screen name={Navigation.SPLASH_ONE} component={SplashOne} />
@@ -41,6 +44,15 @@ const StackNavigator = () => {
         component={ResetPassword}
       />
       <Stack.Screen name={Navigation.ALL_DONE} component={AllDone} />
+      <Stack.Screen
+        name={Navigation.INTERACTIVE_BOOK}
+        component={InteractiveBook}
+      />
+      <Stack.Screen
+        name={Navigation.TRADITIONAL_BOOK}
+        component={TradionalBook}
+      />
+      <Stack.Screen name={Navigation.TEST_SCREEN} component={TestScreen} />
     </Stack.Navigator>
   );
 };

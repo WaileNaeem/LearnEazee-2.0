@@ -29,4 +29,5 @@ export const IMAGES = {
   ViasLogo: require('../assets/visa.png'),
   AmericanExpressLogo: require('../assets/AmericanExpress.png'),
   DiscoverLogo: require('../assets/Discover.png'),
+  birdImage: require('../assets/birdImage.jpg'),
 };

@@ -15,7 +15,7 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       screenOptions={{headerShown: false, drawerStyle: {width: '85%'}}}
-      initialRouteName={Navigation.TAB}
+      initialRouteName={Navigation.PAYMENT}
       drawerContent={() => <Sidebar />}>
       <Drawer.Screen name={Navigation.TAB} component={BottomTabsNavigator} />
       <Drawer.Screen name={Navigation.ADD_TO_CART} component={AddToCart} />

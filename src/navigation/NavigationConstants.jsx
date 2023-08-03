@@ -21,4 +21,7 @@ export const Navigation = {
   SAMPLE: 'sample-screen',
   CART: 'cart-screen',
   ORDER_PLACED: 'order-placed-screen',
+  INTERACTIVE_BOOK: 'interactive-book-screen',
+  TRADITIONAL_BOOK: 'traditional-Book',
+  TEST_SCREEN: 'test-screen',
 };
