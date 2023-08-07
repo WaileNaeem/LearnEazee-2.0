@@ -4,7 +4,7 @@ import {COLORS} from '../../../utils/colors';
 import styles from './styles';
 
 const AppButton = ({
-  title,
+  title = 'Title',
   buttonStyle = {backgroundColor: COLORS.white},
   textStyle = {color: COLORS.black1},
   onPress,

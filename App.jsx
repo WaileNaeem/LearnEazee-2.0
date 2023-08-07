@@ -1,10 +1,14 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import 'react-native-gesture-handler';
 import AppNavigator from './src/navigation/AppNavigator';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
-  return <AppNavigator />;
+  return (
+    <SafeAreaProvider>
+      <AppNavigator />
+    </SafeAreaProvider>
+  );
 };
 
 export default App;

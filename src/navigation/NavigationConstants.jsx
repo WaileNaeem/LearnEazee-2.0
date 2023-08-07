@@ -24,4 +24,6 @@ export const Navigation = {
   INTERACTIVE_BOOK: 'interactive-book-screen',
   TRADITIONAL_BOOK: 'traditional-Book',
   TEST_SCREEN: 'test-screen',
+  CONGRATULATIONS: 'congratulation-screen',
+  INVITE_USER: 'invite-user-screen',
 };

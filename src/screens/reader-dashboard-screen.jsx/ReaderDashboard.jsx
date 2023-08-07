@@ -3,7 +3,14 @@ import React, {useState} from 'react';
 import AppScreen from '../../components/app-screen';
 import Header from '../../components/header/Header';
 import {Searchbar} from 'react-native-paper';
-import {Surface, DataTable, Avatar, Button, Card} from 'react-native-paper';
+import {
+  Surface,
+  DataTable,
+  Avatar,
+  Button,
+  Card,
+  Dialog,
+} from 'react-native-paper';
 import styles from './styles';
 import {IMAGES} from '../../../utils/images-path';
 import ReaderDetailsCard from '../../components/reader-details-card-component/ReaderDetailsCard';
@@ -22,7 +29,6 @@ const ReaderDashboard = () => {
   const handlePopUp = () => {
     setIspopupVisible(!ispopupVisible);
   };
-  console.log(ispopupVisible);
   const handleLongPress = () => {
     setIspopupButtonVisible(true);
   };
@@ -32,6 +38,7 @@ const ReaderDashboard = () => {
       setIspopupVisible(false);
     }
   };
+
   return (
     <AppScreen>
       <Header title={'Reader Dashboard'} />
